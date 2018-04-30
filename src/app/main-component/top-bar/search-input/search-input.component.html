@@ -1,0 +1,4 @@
+<form class="search-container">
+    <input type="text" id="search-bar" [(ngModel)]="searchPhrase" placeholder="Wyszukaj dokument..." [ngModelOptions]="{standalone: true}">
+    <fa [name]="'search'" (click)="fuzzySearch()" [size]=1></fa>
+</form>

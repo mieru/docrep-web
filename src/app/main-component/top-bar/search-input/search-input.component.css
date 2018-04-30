@@ -1,0 +1,23 @@
+.search-container {
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+input#search-bar {
+    width: 100%;
+    height: 27px;
+    padding: 0px 6px;
+    border: 1px solid #D0CFCE;
+    outline: none;
+}
+
+fa {
+    position: relative;
+    right: 35px;
+    padding: 3px;
+    color: #8a8a8a;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}

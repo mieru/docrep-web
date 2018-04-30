@@ -1,0 +1,8 @@
+.document-row td {
+    width: 210px;
+}
+
+.document-row {
+    text-align: justify;
+    border: 1px solid #f6f7f9;
+}

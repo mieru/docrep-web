@@ -1,12 +1,14 @@
+import { JavaLocalDate } from "../../common/java-local-date";
+
 export class Document{
    id:number;
    number:string;
    title:string;
    barcode:string;
-   registerDate:any;
+   registerDate:JavaLocalDate;
    storageLocation:any;
    lastModifier:any;
    description:string;
    version:number;
-   editDate:any;
+   editDate:JavaLocalDate;
 }

@@ -3,10 +3,29 @@
         Moje dokumenty
     </p-header>
     <ng-template let-document pTemplate="item">
-        <h5>{{document.title}} </h5>
-        <h5>{{document.number}}</h5>
+        <div class="document-row">
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <strong>{{document.title}}</strong>
+                    </td>
+                    <td>
+                        <strong>{{document.number}}</strong>
+                    </td>
+                    <td>
+                        <strong>{{document.barcode}}</strong>
+                    </td>
+                    <td>
+                        <strong>{{document.registerDate}}</strong>
+                    </td>
 
-        <div>Opis: </div>
-        <div>{{document.description}}</div>
+                </tr>
+                <tr>
+                    <td colspan="10">
+                        <span>{{document.description}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </ng-template>
 </p-dataList>

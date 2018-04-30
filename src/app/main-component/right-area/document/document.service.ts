@@ -7,10 +7,16 @@ export class DocumentService {
 
   constructor(private http: HttpClient) {}
 
-    getDocuments(documentSearch:DocumentSearch) {
-        return this.http.post('http://localhost:8080/api/document/search', documentSearch)
+    getAllDocuments(documentSearch:DocumentSearch) {
+        return this.http.post('http://localhost:8080/api/document/search/all', documentSearch)
                     .toPromise();
                   
     }
+
+    getDocuments(documentSearch:DocumentSearch) {
+      return this.http.post('http://localhost:8080/api/document/search', documentSearch)
+                  .toPromise();
+                
+  }
 
 }

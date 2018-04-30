@@ -1,3 +1,31 @@
-<p>
-  all-documents works!
-</p>
+<p-dataList [value]="documents" [paginator]="true" [rows]="5">
+    <p-header>
+        Dokumenty
+    </p-header>
+    <ng-template let-document pTemplate="item">
+        <div class="document-row">
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <strong>{{document.title}}</strong>
+                    </td>
+                    <td>
+                        <strong>{{document.number}}</strong>
+                    </td>
+                    <td>
+                        <strong>{{document.barcode}}</strong>
+                    </td>
+                    <td>
+                        <strong>{{document.registerDate}}</strong>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="10">
+                        <span>{{document.description}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </ng-template>
+</p-dataList>

@@ -1,6 +1,18 @@
 <div class="topbar">
-    <app-hamburger-menu-button (click)="hamButtonClick()"></app-hamburger-menu-button>
-    <span>Repozytorium</span>
-    <!-- <span>Wyszukiwarka</span> -->
-    <app-user-short-info></app-user-short-info>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 35px;">
+                <app-hamburger-menu-button (click)="hamButtonClick()"></app-hamburger-menu-button>
+            </td>
+            <td style="width: 320px;">
+                <span>Repozytorium</span>
+            </td>
+            <td style="width: 400px;">
+                <app-search-input></app-search-input>
+            </td>
+            <td>
+                <app-user-short-info></app-user-short-info>
+            </td>
+        </tr>
+    </table>
 </div>

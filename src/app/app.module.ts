@@ -24,6 +24,7 @@ import { LogoutComponent } from './main-component/right-area/logout/logout.compo
 import { DataListModule } from 'primeng/datalist';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TokenInterceptor } from "./main-component/right-area/login-page/token.interceptor";
+import { SearchInputComponent } from './main-component/top-bar/search-input/search-input.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'user/documents', pathMatch: 'full' },
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     LoginPageComponent,
     AllDocumentsComponent,
     ArchiveComponent,
-    LogoutComponent
+    LogoutComponent,
+    SearchInputComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
