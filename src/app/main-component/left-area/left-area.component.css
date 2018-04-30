@@ -1,0 +1,6 @@
+:host {
+    display: inline-table;
+    height: 90vh;
+    z-index: 10;
+    background: #f6f6f7;
+}

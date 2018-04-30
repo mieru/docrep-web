@@ -1,0 +1,22 @@
+<div class="sidenav">
+    <a *ngIf="!authenticated" [routerLink]="'login'">
+        <fa [name]="'sign-in'" [size]=1></fa>
+        <span *ngIf="hideTexts">Logowanie</span>
+    </a>
+    <a *ngIf="authenticated" [routerLink]="'user/documents'">
+        <fa [name]="'user'" [size]=1></fa>
+        <span *ngIf="hideTexts">Moje dokumenty</span>
+    </a>
+    <a *ngIf="authenticated" [routerLink]="'documents'">
+        <fa [name]="'file'" [size]=1></fa>
+        <span *ngIf="hideTexts">Dokumenty</span>
+    </a>
+    <a *ngIf="authenticated" [routerLink]="'archive'">
+        <fa [name]="'archive'" [size]=1></fa>
+        <span *ngIf="hideTexts">Archiwum</span>
+    </a>
+    <a *ngIf="authenticated" [routerLink]="'logout'">
+        <fa [name]="'sign-out'" [size]=1></fa>
+        <span *ngIf="hideTexts">Wyloguj</span>
+    </a>
+</div>
