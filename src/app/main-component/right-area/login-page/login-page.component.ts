@@ -41,13 +41,15 @@ export class LoginPageComponent implements OnInit {
     event.preventDefault();
     this.onControlValueChanged();
     if (form.valid) {
-      this.authService.login(this.modelForm.get("login").value, this.modelForm.get("password").value).subscribe(
-        response => {
-          localStorage.setItem('token', response);
-          localStorage.setItem('user', JSON.stringify(this.authService.createCustomerAccountByToken(response)));
+      this.authService.login(this.modelForm.get("login").value, this.modelForm.get("password").value)
+      .subscribe(
+        data => {
+          console.log(data);
+          localStorage.setItem('token', data);
+          localStorage.setItem('user', JSON.stringify(this.authService.createCustomerAccountByToken(data)));
           location.reload();
         }, error => {
-          alert("Bad name or pass")
+          console.log(error)
         });
     }
   }

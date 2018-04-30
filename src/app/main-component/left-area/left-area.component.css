@@ -2,6 +2,6 @@
     display: inline-table;
     height: 90vh;
     z-index: 10;
-    position: fixed;
+    position: absolute;
     background: #f6f6f7;
 }

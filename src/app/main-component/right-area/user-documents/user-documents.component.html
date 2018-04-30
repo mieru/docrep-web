@@ -1,3 +1,12 @@
-<p>
-  user-documents works!
-</p>
+<p-dataList [value]="documents" [paginator]="true" [rows]="5">
+    <p-header>
+        Moje dokumenty
+    </p-header>
+    <ng-template let-document pTemplate="item">
+        <h5>{{document.title}} </h5>
+        <h5>{{document.number}}</h5>
+
+        <div>Opis: </div>
+        <div>{{document.description}}</div>
+    </ng-template>
+</p-dataList>
