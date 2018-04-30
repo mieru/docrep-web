@@ -1,5 +1,5 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
-import { trigger,state,style,transition,animate,keyframes } from '@angular/animations';
+import { Component, OnInit, HostBinding, Input, ElementRef } from '@angular/core';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-left-area',
@@ -8,18 +8,17 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
   animations: [
     trigger('toggleState', [
       state('true', style({ width: '230px' })),
-      state('false', style({width: '55px' })),
+      state('false', style({ width: '55px' })),
       transition('* => *', animate('300ms')),
     ])
-  ]
+  ],
+
 })
 export class LeftAreaComponent implements OnInit {
   @Input() expanded: boolean = true;
-  constructor() { }
 
   ngOnInit() {
   }
-
-
-
+ 
 }
+

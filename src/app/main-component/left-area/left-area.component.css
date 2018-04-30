@@ -2,5 +2,6 @@
     display: inline-table;
     height: 90vh;
     z-index: 10;
+    position: fixed;
     background: #f6f6f7;
 }
