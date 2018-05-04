@@ -25,6 +25,11 @@ import { DataListModule } from 'primeng/datalist';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TokenInterceptor } from "./main-component/right-area/login-page/token.interceptor";
 import { SearchInputComponent } from './main-component/top-bar/search-input/search-input.component';
+import {CalendarModule} from 'primeng/calendar';
+import {DropdownModule} from 'primeng/dropdown';
+import { AddDocumentFormComponent } from './main-component/right-area/all-documents/add-document-form/add-document-form.component';
+import { EditDocumentFormComponent } from './main-component/right-area/all-documents/edit-document-form/edit-document-form.component';
+import { DocumentDetailFormComponent } from './main-component/right-area/all-documents/document-detail-form/document-detail-form.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'user/documents', pathMatch: 'full' },
@@ -32,6 +37,9 @@ const appRoutes: Routes = [
   { path: 'documents', component: AllDocumentsComponent, canActivate: [AuthGuard] },
   { path: 'archive', component: ArchiveComponent, canActivate: [AuthGuard] },
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
+  { path: 'documents/add-document', component: AddDocumentFormComponent, canActivate: [AuthGuard] },
+  { path: 'documents/document-detail', component: DocumentDetailFormComponent, canActivate: [AuthGuard] },
+  { path: 'documents/edit-document', component: EditDocumentFormComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginPageComponent }
 ];
 
@@ -49,12 +57,17 @@ const appRoutes: Routes = [
     AllDocumentsComponent,
     ArchiveComponent,
     LogoutComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    AddDocumentFormComponent,
+    EditDocumentFormComponent,
+    DocumentDetailFormComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
+    DropdownModule,
+    CalendarModule,
     DataListModule,
     HttpClientModule,
     BrowserAnimationsModule,

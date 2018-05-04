@@ -20,9 +20,7 @@ export class SearchInputComponent implements OnInit {
   }
 
   fuzzySearch(){
-    let documentSearch = new DocumentSearch();
-    documentSearch.title = this.searchPhrase;
-    this.documentService.getAllDocuments(documentSearch).then(documents => console.log(documents));
+    this.documentService.getFuzzyDocuments(this.searchPhrase).then(documents => console.log(documents));
   }
 
 }

@@ -10,6 +10,7 @@ input#search-bar {
     padding: 0px 6px;
     border: 1px solid #D0CFCE;
     outline: none;
+    border-radius: 2px;
 }
 
 fa {

@@ -1,31 +1,61 @@
-<p-dataList [value]="documents" [paginator]="true" [rows]="5">
-    <p-header>
-        Dokumenty
-    </p-header>
-    <ng-template let-document pTemplate="item">
-        <div class="document-row">
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <strong>{{document.title}}</strong>
-                    </td>
-                    <td>
-                        <strong>{{document.number}}</strong>
-                    </td>
-                    <td>
-                        <strong>{{document.barcode}}</strong>
-                    </td>
-                    <td>
-                        <strong>{{document.registerDate}}</strong>
-                    </td>
+<div class="search-form">
+    <form class="login" (ngSubmit)="onSubmit($event)">
+        <h3 class="login-title">Wyszukiwanie</h3>
+        <table>
+            <tr>
+                <td>
+                    <p-calendar [(ngModel)]="dateFrom" placeholder="Data od" [showIcon]="true" [ngModelOptions]="{standalone: true}"></p-calendar>
+                </td>
+                <td>
+                    <p-calendar [(ngModel)]="dateTo" placeholder=" Data do " [showIcon]="true " [ngModelOptions]="{standalone: true}"></p-calendar>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="number" name="number " placeholder="Numer " [ngModelOptions]="{standalone: true}" pInputText>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="barcode" name="barcode " placeholder="Kod kreskowy " [ngModelOptions]="{standalone: true}" pInputText>
+                </td>
+                <td>
+                    <p-dropdown [(ngModel)]="ownerId" [options]="owners" placeholder="Właściciel" [ngModelOptions]="{standalone: true}" [showClear]="true"></p-dropdown>
+                </td>
+                <td>
+                    <button type="submit" pButton label="Szukaj "></button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <button pButton label="Dodaj" [routerLink]="'add-document'"></button>
+</div>
+<div>
+    <p-dataList [value]="documents" [paginator]="true" [rows]="5">
+        <p-header>
+            Dokumenty
+        </p-header>
+        <ng-template let-document pTemplate="item ">
+            <div class="document-row " (click)="onClick($event)">
+                <table style="width: 100%; ">
+                    <tr>
+                        <td>
+                            <strong>{{document.title}}</strong>
+                        </td>
+                        <td>
+                            <strong>{{document.number}}</strong>
+                        </td>
+                        <td>
+                            <strong>{{document.barcode}}</strong>
+                        </td>
+                        <td>
+                            <strong>{{document.registerDate}}</strong>
+                        </td>
 
-                </tr>
-                <tr>
-                    <td colspan="10">
-                        <span>{{document.description}}</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </ng-template>
-</p-dataList>
+                    </tr>
+                    <tr>
+                        <td colspan="10 ">
+                            <span>{{document.description}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </ng-template>
+    </p-dataList>
+</div>

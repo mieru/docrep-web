@@ -6,3 +6,11 @@
     text-align: justify;
     border: 1px solid #f6f7f9;
 }
+
+.search-form td {
+    width: 210px;
+}
+
+.search-form {
+    margin: 5px;
+}
