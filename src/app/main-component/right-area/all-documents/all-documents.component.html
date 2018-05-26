@@ -1,38 +1,42 @@
 <div class="search-form">
     <form class="login" (ngSubmit)="onSubmit($event)">
-        <h3 class="login-title">Wyszukiwanie</h3>
+        <strong class="login-title">Wyszukiwanie:</strong>
         <table>
             <tr>
                 <td>
-                    <p-calendar [(ngModel)]="dateFrom" placeholder="Data od" [showIcon]="true" [ngModelOptions]="{standalone: true}"></p-calendar>
+                    <label>Data od:</label>
+                    <p-calendar [(ngModel)]="dateFrom" [showIcon]="true" [ngModelOptions]="{standalone: true}"></p-calendar>
                 </td>
                 <td>
-                    <p-calendar [(ngModel)]="dateTo" placeholder=" Data do " [showIcon]="true " [ngModelOptions]="{standalone: true}"></p-calendar>
+                    <label>Data do:</label>
+                    <p-calendar [(ngModel)]="dateTo" [showIcon]="true " [ngModelOptions]="{standalone: true}"></p-calendar>
+                </td>
+                <td style="width: 180px">
+                    <label>Numer:</label>
+                    <input type="text" [(ngModel)]="number" name="number " [ngModelOptions]="{standalone: true}" pInputText>
+                </td>
+                <td style="width: 180px">
+                    <label>Kod kreskowy:</label>
+                    <input type="text" [(ngModel)]="barcode" name="barcode " [ngModelOptions]="{standalone: true}" pInputText>
                 </td>
                 <td>
-                    <input type="text" [(ngModel)]="number" name="number " placeholder="Numer " [ngModelOptions]="{standalone: true}" pInputText>
+                    <label>Użytkownik rejestrujący:</label>
+                    <p-dropdown [(ngModel)]="ownerId" [options]="owners" [ngModelOptions]="{standalone: true}" [autoWidth]="false" [style]="{'width':'160px', 'content':'none'}"></p-dropdown>
                 </td>
-                <td>
-                    <input type="text" [(ngModel)]="barcode" name="barcode " placeholder="Kod kreskowy " [ngModelOptions]="{standalone: true}" pInputText>
-                </td>
-                <td>
-                    <p-dropdown [(ngModel)]="ownerId" [options]="owners" placeholder="Właściciel" [ngModelOptions]="{standalone: true}" [showClear]="true"></p-dropdown>
-                </td>
-                <td>
-                    <button type="submit" pButton label="Szukaj "></button>
+                <td style="padding-top: 22px">
+                    <button type="submit" pButton label="Szukaj"></button>
+                    <button icon="fa-plus" iconPos="left" style="float: right;" class="ui-button-success" pButton label="Dodaj" [routerLink]="'add-document'"></button>
                 </td>
             </tr>
         </table>
     </form>
-    <button pButton label="Dodaj" [routerLink]="'add-document'"></button>
 </div>
+
 <div>
     <p-dataList [value]="documents" [paginator]="true" [rows]="5">
-        <p-header>
-            Dokumenty
-        </p-header>
+        <p-header> Dokumenty </p-header>
         <ng-template let-document pTemplate="item ">
-            <div class="document-row " (click)="onClick($event)">
+            <div class="document-row " (click)="onClick($event, document)">
                 <table style="width: 100%; ">
                     <tr>
                         <td>
@@ -47,10 +51,9 @@
                         <td>
                             <strong>{{document.registerDate}}</strong>
                         </td>
-
                     </tr>
                     <tr>
-                        <td colspan="10 ">
+                        <td colspan="10">
                             <span>{{document.description}}</span>
                         </td>
                     </tr>

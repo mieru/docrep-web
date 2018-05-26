@@ -30,6 +30,10 @@ import {DropdownModule} from 'primeng/dropdown';
 import { AddDocumentFormComponent } from './main-component/right-area/all-documents/add-document-form/add-document-form.component';
 import { EditDocumentFormComponent } from './main-component/right-area/all-documents/edit-document-form/edit-document-form.component';
 import { DocumentDetailFormComponent } from './main-component/right-area/all-documents/document-detail-form/document-detail-form.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import { NgxBarcodeModule } from 'ngx-barcode';
+import { DocumentEditorOnlineComponent } from "./main-component/right-area/document-editor-online/document-editor-online.component";
+import { DocumentService } from "./main-component/right-area/document/document.service";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'user/documents', pathMatch: 'full' },
@@ -40,8 +44,13 @@ const appRoutes: Routes = [
   { path: 'documents/add-document', component: AddDocumentFormComponent, canActivate: [AuthGuard] },
   { path: 'documents/document-detail', component: DocumentDetailFormComponent, canActivate: [AuthGuard] },
   { path: 'documents/edit-document', component: EditDocumentFormComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginPageComponent }
+  { path: 'documents/edit-document-online', component: DocumentEditorOnlineComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginPageComponent },
+
+
+
 ];
+
 
 @NgModule({
   declarations: [
@@ -60,24 +69,27 @@ const appRoutes: Routes = [
     SearchInputComponent,
     AddDocumentFormComponent,
     EditDocumentFormComponent,
-    DocumentDetailFormComponent
+    DocumentDetailFormComponent,
+    DocumentEditorOnlineComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
     DropdownModule,
+    NgxBarcodeModule,
     CalendarModule,
     DataListModule,
     HttpClientModule,
     BrowserAnimationsModule,
     InputTextModule,
     ButtonModule,
+    FileUploadModule,
     FormsModule,
     ReactiveFormsModule,
     Angular2FontawesomeModule
   ],
-  providers: [AuthGuard, AuthService,{
+  providers: [DocumentService,AuthGuard, AuthService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

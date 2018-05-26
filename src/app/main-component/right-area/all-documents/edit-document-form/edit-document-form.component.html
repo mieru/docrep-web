@@ -1,1 +1,43 @@
-<button pButton label="Wroć" [routerLink]="'/documents'"></button>
+<div class="add-form">
+    <form class="login">
+        <h3 class="login-title">Edutyj dokument</h3>
+        <table>
+            <tr>
+                <td style="width:310px;">
+                    <div><label>Tytuł:</label></div>
+                    <input type="text" [(ngModel)]="document.title" name="title " size="35" [ngModelOptions]="{standalone: true}" pInputText>
+                    <div><label>Numer:</label></div>
+                    <input type="text" [(ngModel)]="document.number" name="number " size="35" [ngModelOptions]="{standalone: true}" pInputText>
+                </td>
+                <td style="width:310px">
+                    <div><label>Wersja:</label></div>
+                    {{document?.version}}
+                    <div><label>Miejsce przechowywania:</label></div>
+                    {{document?.storageLocation}}
+                </td>
+                <td>
+                    <div>
+                        <div><label>Kod kreskowy:</label></div>
+                        <ngx-barcode [bc-value]="document.barcode" [bc-display-value]="true" [bc-height]="50" [bc-width]="2"></ngx-barcode>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <textarea [rows]="5" [cols]="155" pInputTextarea autoResize="autoResize" [(ngModel)]="document.description" name="description " placeholder="Opis " [ngModelOptions]="{standalone: true}"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <p-fileUpload #fileInput [showUploadButton]="false" [showCancelButton]="false" maxFileSize="1000000"></p-fileUpload>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <button type="submit" (click)="onSubmit($event)" pButton label="OK"></button>
+                    <button pButton label="Wroć" [routerLink]="'/documents/document-detail'"></button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

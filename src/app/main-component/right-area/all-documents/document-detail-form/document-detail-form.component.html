@@ -1,2 +1,47 @@
-<button pButton label="Wroć" [routerLink]="'/documents'"></button>
-<button pButton label="Edycja" [routerLink]="'/documents/edit-document'"></button>
+<div class="add-form">
+    <form class="login">
+        <h3 class="login-title">Szczegły dokumentu:</h3>
+        <table>
+            <tr>
+                <td style="width:310px;">
+                    <div><label>Tytuł:</label></div>
+                    {{document?.title}}
+                    <div><label>Numer:</label></div>
+                    {{document?.number}}
+                </td>
+                <td style="width:310px">
+                    <div><label>Wersja:</label></div>
+                    {{document?.version}}
+                    <div><label>Miejsce przechowywania:</label></div>
+                    [{{document?.storageLocation.type}}]{{document?.storageLocation.name}}
+                </td>
+                <td style="width:310px">
+
+                </td>
+                <td>
+                    <div>
+                        <div><label>Kod kreskowy:</label></div>
+                        <ngx-barcode [bc-value]="document?.barcode" [bc-display-value]="true" [bc-height]="50" [bc-width]="2"></ngx-barcode>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <div><label>Opis:</label></div>
+                    {{document?.description}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    lista plikow
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <button pButton label="Edycja" [routerLink]="'/documents/edit-document'"></button>
+                    <button pButton label="Wroć" [routerLink]="'/documents'"></button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

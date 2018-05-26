@@ -5,15 +5,19 @@ import { JavaLocalDate } from '../../common/java-local-date';
 import { SelectItem } from 'primeng/components/common/selectitem';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+declare global {
+  interface Window { MyNamespace: any; }
+}
+
+window.MyNamespace = window.MyNamespace || {};
 
 @Component({
   selector: 'app-all-documents',
   templateUrl: './all-documents.component.html',
-  styleUrls: ['./all-documents.component.css'],
-  providers:[DocumentService]
+  styleUrls: ['./all-documents.component.css']
 })
-export class AllDocumentsComponent implements OnInit {
 
+export class AllDocumentsComponent implements OnInit {
   documents: Document[];
   owners:SelectItem[];
 
@@ -45,8 +49,9 @@ export class AllDocumentsComponent implements OnInit {
     this.documentService.getAllDocuments(documentSearch).then(documents => this.documents = <Document[]> documents);
   }
 
-  onClick(event){
-    this.router.navigateByUrl('/documents/document-detail');
+  onClick(event, document){
+    this.documentService.selectedDocument = document;
+       this.router.navigateByUrl('/documents/document-detail');
   }
 
 }
