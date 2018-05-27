@@ -5,6 +5,7 @@ import { JavaLocalDate } from '../../common/java-local-date';
 import { SelectItem } from 'primeng/components/common/selectitem';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { Document } from '../document/document';
 declare global {
   interface Window { MyNamespace: any; }
 }

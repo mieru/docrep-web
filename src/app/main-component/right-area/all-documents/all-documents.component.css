@@ -1,10 +1,17 @@
 .document-row td {
-    width: 210px;
+    vertical-align: top;
+    min-width: 215px;
 }
 
 .document-row {
     text-align: justify;
-    border: 1px solid #f6f7f9;
+    font-size: 14px;
+    border-bottom: 1px solid #d4d5d6;
+}
+
+.document-row:hover {
+    cursor: pointer;
+    background-color: #d8d6d6;
 }
 
 .search-form td {
@@ -13,4 +20,23 @@
 
 .search-form {
     margin: 5px;
+}
+
+.description {
+    margin-left: 10px;
+    font-size: 12px;
+    font-style: italic;
+    width: 90%;
+    height: 50px;
+    display: block;
+    overflow: hidden
+}
+
+.title {
+    color: gray;
+}
+
+label {
+    font-size: 12px;
+    font-weight: 700;
 }

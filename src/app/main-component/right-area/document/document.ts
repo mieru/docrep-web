@@ -7,10 +7,11 @@ export class Document{
    number:string;
    title:string;
    barcode:string;
-   registerDate:JavaLocalDate;
+   registerDate:Date;
    storageLocation:StorageLocation;
    lastModifier:any;
+   creator:any
    description:string;
    version:number;
-   editDate:JavaLocalDate;
+   editDate:Date;
 }

@@ -33,32 +33,44 @@
 </div>
 
 <div>
-    <p-dataList [value]="documents" [paginator]="true" [rows]="5">
+    <p-dataList [value]="documents" [paginator]="true" [rows]="10">
         <p-header> Dokumenty </p-header>
         <ng-template let-document pTemplate="item ">
-            <div class="document-row " (click)="onClick($event, document)">
-                <table style="width: 100%; ">
+            <div class="document-row" (dblclick)="onClick($event, document)">
+                <table style="width: 100%;">
                     <tr>
+
                         <td>
-                            <strong>{{document.title}}</strong>
+                            <label>Tytuł:</label>
+                            <div>{{document.title}}</div>
                         </td>
                         <td>
-                            <strong>{{document.number}}</strong>
+                            <label>Numer:</label>
+                            <div>{{document.number}}</div>
                         </td>
-                        <td>
-                            <strong>{{document.barcode}}</strong>
+                        <td><label>Kod:</label>
+                            <div>{{document.barcode}}</div>
                         </td>
-                        <td>
-                            <strong>{{document.registerDate}}</strong>
+                        <td><label>Data rejestracji:</label>
+                            <div>{{document.registerDate | date:'yyyy-MM-dd HH:mm' }}</div>
                         </td>
+                        <td><label>Osoba rejestrująca:</label>
+                            <div>{{document.creator.firstname}} {{document.creator.lastname}}</div>
+                        </td>
+
                     </tr>
                     <tr>
-                        <td colspan="10">
-                            <span>{{document.description}}</span>
+                        <td colspan="5">
+                            <div class="description">
+                                <div [title]="document.description">{{document.description}}</div>
+                            </div>
                         </td>
                     </tr>
                 </table>
+
+
             </div>
+
         </ng-template>
     </p-dataList>
 </div>

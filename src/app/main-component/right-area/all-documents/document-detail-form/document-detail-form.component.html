@@ -1,22 +1,36 @@
 <div class="add-form">
-    <form class="login">
-        <h3 class="login-title">Szczegły dokumentu:</h3>
-        <table>
+    <form class="form-detail">
+        <strong>Szczegły dokumentu:
+            <div style="float:right;">
+                <button pButton label="Edycja" [routerLink]="'/documents/edit-document'"></button>
+                <button pButton label="Wroć" [routerLink]="'/documents'"></button>
+            </div>
+        </strong>
+
+        <table style="width: 100%;">
             <tr>
                 <td style="width:310px;">
-                    <div><label>Tytuł:</label></div>
-                    {{document?.title}}
-                    <div><label>Numer:</label></div>
-                    {{document?.number}}
+                    <label>Tytuł:</label>
+                    <div>{{document.title}}</div>
+                    <label>Numer:</label>
+                    <div>{{document.number}}</div>
                 </td>
                 <td style="width:310px">
-                    <div><label>Wersja:</label></div>
-                    {{document?.version}}
-                    <div><label>Miejsce przechowywania:</label></div>
-                    [{{document?.storageLocation.type}}]{{document?.storageLocation.name}}
+                    <label>Data rejestracji:</label>
+                    <div>{{document.registerDate | date:'yyyy-MM-dd HH:mm' }}</div>
+                    <label>Osoba rejestrująca:</label>
+                    <div>{{document.creator.firstname}} {{document.creator.lastname}}</div>
                 </td>
-                <td style="width:310px">
 
+                <td style="width:310px">
+                    <label>Wersja:</label>
+                    <div>{{document?.version}}</div>
+                    <label>Miejsce przechowywania:</label>
+                    <div>{{document?.editDate | date:'yyyy-MM-dd HH:mm' }}</div>
+                </td>
+                <td style="width:310px">
+                    <label>Miejsce przechowywania:</label>
+                    <div [innerHtml]="storageLocationTree"></div>
                 </td>
                 <td>
                     <div>
@@ -27,21 +41,32 @@
             </tr>
             <tr>
                 <td colspan="5">
-                    <div><label>Opis:</label></div>
-                    {{document?.description}}
+                    <label>Opis:</label>
+                    <div>{{document?.description}}</div>
                 </td>
             </tr>
             <tr>
                 <td colspan="4">
-                    lista plikow
+                    <label> Załączone pliki:</label>
+                    <p-dataTable [value]="documentAttachments">
+                        <p-column header="Lp.">
+                            <ng-template let-i="rowIndex" pTemplate="body">
+                                {{i+1}}
+                            </ng-template>
+                        </p-column>
+                        <p-column field="name" header="Nazwa"></p-column>
+                        <p-column field="extension" header="Rozszerzenie "></p-column>
+                        <p-column field="size" header="Rozmiar [kb]"></p-column>
+                        <p-column>
+                            <ng-template let-col let-car="rowData" pTemplate="body">
+                                <fa [name]="'download'" [size]=1></fa>
+                                <fa [name]="'edit'" [size]=1></fa>
+                            </ng-template>
+                        </p-column>
+                    </p-dataTable>
                 </td>
             </tr>
-            <tr>
-                <td colspan="4">
-                    <button pButton label="Edycja" [routerLink]="'/documents/edit-document'"></button>
-                    <button pButton label="Wroć" [routerLink]="'/documents'"></button>
-                </td>
-            </tr>
+
         </table>
     </form>
 </div>
