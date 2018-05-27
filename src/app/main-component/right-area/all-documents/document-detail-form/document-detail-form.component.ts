@@ -6,6 +6,13 @@ import { DocumentToAdd } from '../add-document-form/document-to-add';
 import { Document } from '../../document/document';
 import { DocumentAttachments } from './document-attachments';
 import { StorageLocation } from '../storage-location';
+import { Router } from '@angular/router';
+
+declare global {
+  interface Window { MyNamespace: any; }
+}
+
+window.MyNamespace = window.MyNamespace || {};
 
 @Component({
   selector: 'app-document-detail-form',
@@ -21,20 +28,22 @@ export class DocumentDetailFormComponent implements OnInit {
 
   public storageLocationTree:string;
 
-  constructor(private documentService:DocumentService, private addDocumentService:AddDocumentService) { }
+  constructor(private documentService:DocumentService, private addDocumentService:AddDocumentService, private router:Router) { }
 
   ngOnInit() {
     this.document = this.documentService.selectedDocument;
-    this.documentAttachments = [];
-    let documentAttachment:DocumentAttachments = new DocumentAttachments();
-    documentAttachment.extension ='txt';
-    documentAttachment.name = 'Test';
-    documentAttachment.size = 16283;
-    this.documentAttachments.push(documentAttachment);
+    this.documentService.getAttachmentsByDocumentId(this.document.id).then(documentAttachments => this.documentAttachments = <DocumentAttachments[]> documentAttachments);
     this.storageLocationTree = this.prepareStorageLocationTree(this.document.storageLocation);
   }
  
+public downloadFile(filename:string){
+  window.location.href="http://localhost:8080/file/"+this.document.id+"/"+ filename + "/";
+}
 
+public editFileOnline(filename:string){
+  window.MyNamespace.fileUrl="http://localhost:8080/file/"+this.document.id+"/"+ filename + "/";
+  this.router.navigateByUrl('documents/edit-document-online');
+}
 
   public prepareStorageLocationTree(storageLocation:StorageLocation):string{
     let superior:string = '';

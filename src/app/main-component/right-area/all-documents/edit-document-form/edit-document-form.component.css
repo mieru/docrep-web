@@ -1,8 +1,12 @@
-.add-form {
-    margin-left: 30px;
-    width: 800px;
-}
-
 td {
     vertical-align: top;
+}
+
+label {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.form-detail {
+    padding: 20px;
 }

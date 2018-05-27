@@ -41,8 +41,8 @@ export class AllDocumentsComponent implements OnInit {
 
   onSubmit(event){
     let documentSearch = new DocumentSearch();
-    // documentSearch.searchDateFrom = this.dateFrom;
-    // documentSearch.searchDateTo = this.dateTo;
+    documentSearch.searchDateFrom = this.dateFrom;
+    documentSearch.searchDateTo = this.dateTo;
     documentSearch.barcode = this.barcode;
     documentSearch.number = this.number;
     documentSearch.ownerId = this.ownerId;

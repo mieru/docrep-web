@@ -4,8 +4,8 @@ export class DocumentSearch{
     number:string;
     title:string;
     barcode:string;
-    searchDateFrom:JavaLocalDate;
-    searchDateTo:JavaLocalDate;
+    searchDateFrom:Date;
+    searchDateTo:Date;
     description:string;
     ownerId:number;
     holderUserId:number;

@@ -35,6 +35,7 @@ import { NgxBarcodeModule } from 'ngx-barcode';
 import { DocumentEditorOnlineComponent } from "./main-component/right-area/document-editor-online/document-editor-online.component";
 import { DocumentService } from "./main-component/right-area/document/document.service";
 import {DataTableModule} from 'primeng/datatable';
+import {FieldsetModule} from 'primeng/fieldset';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'user/documents', pathMatch: 'full' },
@@ -78,6 +79,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     DropdownModule,
+    FieldsetModule,
     NgxBarcodeModule,
     DataTableModule,
     CalendarModule,

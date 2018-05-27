@@ -17,7 +17,7 @@
                 </td>
                 <td style="width:310px">
                     <label>Data rejestracji:</label>
-                    <div>{{document.registerDate | date:'yyyy-MM-dd HH:mm' }}</div>
+                    <div>{{document.registerDate | date:'yyyy-MM-dd' }}</div>
                     <label>Osoba rejestrująca:</label>
                     <div>{{document.creator.firstname}} {{document.creator.lastname}}</div>
                 </td>
@@ -26,7 +26,7 @@
                     <label>Wersja:</label>
                     <div>{{document?.version}}</div>
                     <label>Miejsce przechowywania:</label>
-                    <div>{{document?.editDate | date:'yyyy-MM-dd HH:mm' }}</div>
+                    <div>{{document?.editDate | date:'yyyy-MM-dd' }}</div>
                 </td>
                 <td style="width:310px">
                     <label>Miejsce przechowywania:</label>
@@ -40,31 +40,48 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="5">
+                <td colspan="2">
                     <label>Opis:</label>
                     <div>{{document?.description}}</div>
                 </td>
+                <td rowspan="3" colspan="3">
+                    <div>
+                        <label>Opiniowanie:</label>
+                        <p-fieldset legend="Header1">
+                            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the
+                            nature of the family business becomes clear. The business of the family is just like the head of the family,
+                        </p-fieldset>
+                        <p-fieldset legend="Header2">
+                            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the
+                            nature of the family business becomes clear. The business of the family is just like the head of the family,
+                        </p-fieldset>
+                        <p-fieldset legend="Header1">
+                            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the
+                            nature of the family business becomes clear. The business of the family is just like the head of the family,
+                        </p-fieldset>
+                        <p-fieldset legend="Header3">
+                            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the
+                            nature of the family business becomes clear. The business of the family is just like the head of the family,
+                        </p-fieldset>
+
+                    </div>
+
+                </td>
             </tr>
             <tr>
-                <td colspan="4">
+                <td rowspan="2" colspan="2">
                     <label> Załączone pliki:</label>
                     <p-dataTable [value]="documentAttachments">
-                        <p-column header="Lp.">
-                            <ng-template let-i="rowIndex" pTemplate="body">
-                                {{i+1}}
-                            </ng-template>
-                        </p-column>
                         <p-column field="name" header="Nazwa"></p-column>
-                        <p-column field="extension" header="Rozszerzenie "></p-column>
-                        <p-column field="size" header="Rozmiar [kb]"></p-column>
-                        <p-column>
-                            <ng-template let-col let-car="rowData" pTemplate="body">
-                                <fa [name]="'download'" [size]=1></fa>
-                                <fa [name]="'edit'" [size]=1></fa>
+                        <p-column field="name" [style]="{'width':'40px'}">
+                            <ng-template let-col let-attachment="rowData" pTemplate="body">
+                                <fa [name]="'download'" [size]=1 (click)="downloadFile(attachment[col.field])"></fa>
+                                <fa [name]="'edit'" [size]=1 (click)="editFileOnline(attachment[col.field])"></fa>
                             </ng-template>
                         </p-column>
                     </p-dataTable>
                 </td>
+
             </tr>
 
         </table>

@@ -4,9 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { DocumentToAdd } from '../all-documents/add-document-form/document-to-add';
 import { Document } from './document';
+import { DocumentAttachments } from '../all-documents/document-detail-form/document-attachments';
 
 @Injectable()
 export class DocumentService {
+ 
   public selectedDocument:Document;
 
 
@@ -22,7 +24,11 @@ export class DocumentService {
   getAllDocuments(documentSearch: DocumentSearch) {
     return this.http.post('http://localhost:8080/api/document/search/all', documentSearch)
       .toPromise();
+  }
 
+  getAttachmentsByDocumentId(documentId: number) {
+    return this.http.get('http://localhost:8080/api/document/attachments/' + documentId)
+      .toPromise();
   }
 
   getDocuments(documentSearch: DocumentSearch) {

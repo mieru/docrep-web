@@ -148,6 +148,8 @@ function createEditor() {
 
 
             saveAs(blob, data.filename);
+
+
             // TODO: hm, saveAs could fail or be cancelled
             editor.setDocumentModified(false);
         }
@@ -187,7 +189,7 @@ function createEditor() {
             }
         });
 
-        loadedFilename = "file";
+
         editor.openDocumentFromUrl(parent.window.MyNamespace.fileUrl, startEditing);
     }
 

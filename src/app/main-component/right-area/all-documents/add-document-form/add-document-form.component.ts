@@ -20,7 +20,8 @@ export class AddDocumentFormComponent implements OnInit {
   public number:string;
   public barcode:string;
   public description:string;
-
+  public opinion:string;
+  public today: number = Date.now();
   constructor(private documentService:DocumentService, private addDocumentService:AddDocumentService) { }
 
 
