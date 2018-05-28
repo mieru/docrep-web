@@ -6,7 +6,6 @@ import { DocumentSearch } from '../../right-area/document/document-search';
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.css'],
-  providers:[DocumentService]
 })
 export class SearchInputComponent implements OnInit {
 
@@ -20,7 +19,7 @@ export class SearchInputComponent implements OnInit {
   }
 
   fuzzySearch(){
-    this.documentService.getFuzzyDocuments(this.searchPhrase).then(documents => console.log(documents));
+    this.documentService.getFuzzyDocuments(this.searchPhrase);
   }
 
 }

@@ -3,4 +3,5 @@ export class DocumentToAdd{
     number:string;
     barcode:string;
     description:string;
+    storageLocationId:number;
 }

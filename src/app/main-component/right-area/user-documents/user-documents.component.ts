@@ -17,9 +17,7 @@ export class UserDocumentsComponent implements OnInit {
     constructor(private documentService: DocumentService) { }
 
     ngOnInit() {
-        let documentSearch = new DocumentSearch();
-        documentSearch.ownerId = JSON.parse(localStorage.getItem('user')).id;
-        this.documentService.getDocuments(documentSearch).then(documents => this.documents = <Document[]> documents);
+   
     }
 
 }

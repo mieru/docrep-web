@@ -3,6 +3,7 @@
         <strong>Szczegły dokumentu:
             <div style="float:right;">
                 <button pButton label="Edycja" [routerLink]="'/documents/edit-document'"></button>
+                <button pButton label="Usun" (click)="deleteDocument()"></button>
                 <button pButton label="Wroć" [routerLink]="'/documents'"></button>
             </div>
         </strong>
@@ -47,22 +48,11 @@
                 <td rowspan="3" colspan="3">
                     <div>
                         <label>Opiniowanie:</label>
-                        <p-fieldset legend="Header1">
-                            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the
-                            nature of the family business becomes clear. The business of the family is just like the head of the family,
-                        </p-fieldset>
-                        <p-fieldset legend="Header2">
-                            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the
-                            nature of the family business becomes clear. The business of the family is just like the head of the family,
-                        </p-fieldset>
-                        <p-fieldset legend="Header1">
-                            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the
-                            nature of the family business becomes clear. The business of the family is just like the head of the family,
-                        </p-fieldset>
-                        <p-fieldset legend="Header3">
-                            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the
-                            nature of the family business becomes clear. The business of the family is just like the head of the family,
-                        </p-fieldset>
+                        <div *ngFor="let opinion of opinions">
+                            <p-fieldset [legend]="(opinion.addDate | date:'yyyy-MM-dd HH:mm') + ' - ' + opinion.user">
+                                {{opinion.content}}
+                            </p-fieldset>
+                        </div>
 
                     </div>
 

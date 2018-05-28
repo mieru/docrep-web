@@ -1,6 +1,10 @@
 export class DocumentToEdit{
+    id:number;
     title:string;
     number:string;
-    barcode:string;
+    storageLocationId:number;
     description:string;
+
+    opinion:string;
+
 }

@@ -19,7 +19,6 @@ window.MyNamespace = window.MyNamespace || {};
 })
 
 export class AllDocumentsComponent implements OnInit {
-  documents: Document[];
   owners:SelectItem[];
 
   dateFrom:Date;
@@ -28,15 +27,15 @@ export class AllDocumentsComponent implements OnInit {
   number:string;
   ownerId:number;
 
-  constructor(private documentService: DocumentService, private router:Router) {
+  constructor(public documentService: DocumentService, private router:Router) {
     this.owners = [
-      {label: 'User1', value: 15}
+      {label: 'Jan Kowalski', value: 15}
   ];
    }
 
   ngOnInit() {
       let documentSearch = new DocumentSearch();
-      this.documentService.getAllDocuments(documentSearch).then(documents => this.documents = <Document[]> documents);
+      this.documentService.getAllDocuments(documentSearch)
   }
 
   onSubmit(event){
@@ -47,7 +46,7 @@ export class AllDocumentsComponent implements OnInit {
     documentSearch.number = this.number;
     documentSearch.ownerId = this.ownerId;
     console.log(documentSearch);
-    this.documentService.getAllDocuments(documentSearch).then(documents => this.documents = <Document[]> documents);
+    this.documentService.getAllDocuments(documentSearch);
   }
 
   onClick(event, document){

@@ -30,7 +30,7 @@
                 </td>
                 <td style="width:310px">
                     <label>Miejsce przechowywania:</label>
-                    <!-- <input type="text" [(ngModel)]="document.number" name="number " size="35" [ngModelOptions]="{standalone: true}" pInputText> -->
+                    <p-dropdown [(ngModel)]="storageLocationId" [options]="items" [ngModelOptions]="{standalone: true}" [autoWidth]="false" [style]="{'width':'160px', 'content':'none'}"></p-dropdown>
                     <td>
                         <div>
                             <div><label>Kod kreskowy:</label> <button *ngIf="!barcode" (click)="genBarcode()" pButton label="Generuj"></button></div>

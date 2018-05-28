@@ -33,7 +33,7 @@
 </div>
 
 <div>
-    <p-dataList [value]="documents" [paginator]="true" [rows]="10">
+    <p-dataList [value]="documentService.documents" [paginator]="true" [rows]="10">
         <p-header> Dokumenty </p-header>
         <ng-template let-document pTemplate="item ">
             <div class="document-row" (dblclick)="onClick($event, document)">

@@ -25,7 +25,7 @@ export class DocumentDetailFormComponent implements OnInit {
   public document:Document;
   public documentAttachments: DocumentAttachments[];
   private tabCounter:number =0;
-
+  public opinions:any[] =[];
   public storageLocationTree:string;
 
   constructor(private documentService:DocumentService, private addDocumentService:AddDocumentService, private router:Router) { }
@@ -33,7 +33,11 @@ export class DocumentDetailFormComponent implements OnInit {
   ngOnInit() {
     this.document = this.documentService.selectedDocument;
     this.documentService.getAttachmentsByDocumentId(this.document.id).then(documentAttachments => this.documentAttachments = <DocumentAttachments[]> documentAttachments);
+    if(this.document.storageLocation)
     this.storageLocationTree = this.prepareStorageLocationTree(this.document.storageLocation);
+
+    this.documentService.getOpinions(this.document.id).then(opinions => this.opinions = <any[]>opinions);
+
   }
  
 public downloadFile(filename:string){
@@ -57,7 +61,9 @@ public editFileOnline(filename:string){
     return '<div>'+ superior + '|_'+storageLocation.name +'</div>';
   }
 
-
+public deleteDocument(){
+  this.documentService.deleteDocument(this.document.id);
+}
 
 
 
