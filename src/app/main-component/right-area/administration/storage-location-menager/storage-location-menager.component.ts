@@ -24,7 +24,7 @@ export class StorageLocationMenagerComponent implements OnInit {
       { field: 'id', header: 'Id' },
       { field: 'name', header: 'Nazwa' },
       { field: 'type', header: 'Typ' },
-      { field: 'superiorStorageLocation?.name', header: 'Nadrzędne' }
+      { field: 'superiorStorageLocId', header: 'Nadrzędne' }
   ];
 
     this.storageLocationService.getAll().then(res => this.storageLocations = <StorageLocation[]>res);

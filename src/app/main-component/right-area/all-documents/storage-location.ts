@@ -5,6 +5,7 @@ export class StorageLocation{
     longitude:number;
     latitude:number;
     superiorStorageLocation:StorageLocation;
+    superiorStorageLocId:number;
     type:string;
     accountId:number;
 }
