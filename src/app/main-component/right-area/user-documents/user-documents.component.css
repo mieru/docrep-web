@@ -12,6 +12,15 @@ td {
     border-bottom: 1px solid #d4d5d6;
 }
 
+.document-row-cart {
+    font-size: 14px;
+    border-bottom: 1px solid #d4d5d6;
+}
+
+.document-row-cart td {
+    width: 210px;
+}
+
 .document-row:hover {
     cursor: pointer;
     background-color: #d8d6d6;

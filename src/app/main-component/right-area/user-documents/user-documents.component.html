@@ -140,7 +140,7 @@
                 <p-dataList [value]="docsInCart" [paginator]="true" [rows]="10">
                     <p-header> Zapisane w koszyku </p-header>
                     <ng-template let-document pTemplate="item ">
-                        <div class="document-row" (dblclick)="onClick($event, document)">
+                        <div class="document-row-cart" (dblclick)="onClick($event, document)">
                             <table style="width: 100%;">
                                 <tr>
                                     <td>
@@ -158,13 +158,7 @@
                                         <fa class="del-document-cart" [name]="'times'" [size]=1 (click)="deleteDocFormCart(document)"></fa>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <div class="description">
-                                            <div [title]="document.description">{{document.description}}</div>
-                                        </div>
-                                    </td>
-                                </tr>
+
                             </table>
                         </div>
                     </ng-template>

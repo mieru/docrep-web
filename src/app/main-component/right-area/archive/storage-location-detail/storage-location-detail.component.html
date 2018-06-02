@@ -15,6 +15,7 @@
             <td colspan="2">
                 <label>Opis:</label>
                 <div>{{storageLocation?.description}}</div>
+                <div *ngIf="storageLocation?.description">Brak opisu</div>
         </tr>
     </table>
 
@@ -43,10 +44,12 @@
                         <td><label>Osoba rejestrująca:</label>
                             <div>{{document.creator.firstname}} {{document.creator.lastname}}</div>
                         </td>
-
+                        <td>
+                            <fa [name]="'cart-plus'" [size]=1 (click)="addToCart(document)"></fa>
+                        </td>
                     </tr>
                     <tr>
-                        <td colspan="5">
+                        <td colspan="6">
                             <div class="description">
                                 <div [title]="document.description">{{document.description}}</div>
                             </div>

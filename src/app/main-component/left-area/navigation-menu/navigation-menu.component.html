@@ -15,6 +15,10 @@
         <fa [name]="'archive'" [size]=1></fa>
         <span *ngIf="hideTexts">Archiwum</span>
     </a>
+    <a *ngIf="authenticated" [routerLink]="'settings'">
+        <fa [name]="'cog'" [size]=1></fa>
+        <span *ngIf="hideTexts">Administracja</span>
+    </a>
     <a *ngIf="authenticated" [routerLink]="'logout'">
         <fa [name]="'sign-out'" [size]=1></fa>
         <span *ngIf="hideTexts">Wyloguj</span>

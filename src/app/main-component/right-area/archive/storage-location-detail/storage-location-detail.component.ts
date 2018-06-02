@@ -52,4 +52,8 @@ onClick($event, document){
   this.documentService.selectedDocument = document;
   this.router.navigateByUrl('/documents/document-detail');
 }
+
+addToCart(document){
+  this.documentService.addToCart(document);
+}
 }

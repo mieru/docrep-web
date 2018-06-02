@@ -39,7 +39,6 @@
             <div class="document-row" (dblclick)="onClick($event, document)">
                 <table style="width: 100%;">
                     <tr>
-
                         <td>
                             <label>Tytuł:</label>
                             <div>{{document.title}}</div>
@@ -57,10 +56,12 @@
                         <td><label>Osoba rejestrująca:</label>
                             <div>{{document.creator.firstname}} {{document.creator.lastname}}</div>
                         </td>
-
+                        <td>
+                            <fa [name]="'cart-plus'" [size]=1 (click)="addToCart(document)"></fa>
+                        </td>
                     </tr>
                     <tr>
-                        <td colspan="5">
+                        <td colspan="6">
                             <div class="description">
                                 <div [title]="document.description">{{document.description}}</div>
                             </div>

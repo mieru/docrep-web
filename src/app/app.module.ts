@@ -40,7 +40,9 @@ import { DocumentCartViewComponent } from './main-component/top-bar/document-car
 import {TreeModule} from 'primeng/tree';
 import { StorageLocTreeComponent } from './main-component/right-area/archive/storage-loc-tree/storage-loc-tree.component';
 import { StorageLocationDetailComponent } from './main-component/right-area/archive/storage-location-detail/storage-location-detail.component';
-
+import { AdministrationComponent } from './main-component/right-area/administration/administration.component';
+import {TabViewModule} from 'primeng/tabview';
+import {TableModule} from 'primeng/table';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'user/documents', pathMatch: 'full' },
@@ -52,6 +54,7 @@ const appRoutes: Routes = [
   { path: 'documents/document-detail', component: DocumentDetailFormComponent, canActivate: [AuthGuard] },
   { path: 'documents/edit-document', component: EditDocumentFormComponent, canActivate: [AuthGuard] },
   { path: 'documents/edit-document-online', component: DocumentEditorOnlineComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: AdministrationComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginPageComponent },
 
 
@@ -80,19 +83,22 @@ const appRoutes: Routes = [
     DocumentEditorOnlineComponent,
     DocumentCartViewComponent,
     StorageLocTreeComponent,
-    StorageLocationDetailComponent
+    StorageLocationDetailComponent,
+    AdministrationComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
     DropdownModule,
+    TabViewModule,
     FieldsetModule,
     TreeModule,
     NgxBarcodeModule,
     DataTableModule,
     CalendarModule,
     DataListModule,
+    TableModule,
     HttpClientModule,
     BrowserAnimationsModule,
     InputTextModule,

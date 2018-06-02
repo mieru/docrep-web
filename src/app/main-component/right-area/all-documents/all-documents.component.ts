@@ -55,4 +55,8 @@ export class AllDocumentsComponent implements OnInit {
        this.router.navigateByUrl('/documents/document-detail');
   }
 
+  addToCart(document){
+    this.documentService.addToCart(document);
+  }
+
 }
