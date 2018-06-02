@@ -43,6 +43,8 @@ import { StorageLocationDetailComponent } from './main-component/right-area/arch
 import { AdministrationComponent } from './main-component/right-area/administration/administration.component';
 import {TabViewModule} from 'primeng/tabview';
 import {TableModule} from 'primeng/table';
+import { UserMenagerComponent } from './main-component/right-area/administration/user-menager/user-menager.component';
+import { StorageLocationMenagerComponent } from './main-component/right-area/administration/storage-location-menager/storage-location-menager.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'user/documents', pathMatch: 'full' },
@@ -84,7 +86,9 @@ const appRoutes: Routes = [
     DocumentCartViewComponent,
     StorageLocTreeComponent,
     StorageLocationDetailComponent,
-    AdministrationComponent
+    AdministrationComponent,
+    UserMenagerComponent,
+    StorageLocationMenagerComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
