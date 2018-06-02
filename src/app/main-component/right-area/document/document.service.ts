@@ -10,13 +10,8 @@ import { DocumentToEdit } from '../all-documents/edit-document-form/document-to-
 @Injectable()
 export class DocumentService {
  
-  deleteDocument(documentId: number) {
-    return this.http.delete('http://localhost:8080/api/document/'+documentId).toPromise();
-  }
-  getOpinions(documentId: number) {
-    return this.http.get('http://localhost:8080/api/document/'+documentId+"/opinions")
-    .toPromise();
-  }
+ 
+
   public selectedDocument:Document;
   public documents: Document[];
 
@@ -31,12 +26,27 @@ export class DocumentService {
       .toPromise();
   }
 
+  deleteOpinion(opinion: any) {
+    this.http.delete('http://localhost:8080/api/document/opinion/'+opinion.id).toPromise();
+  }
+
   editDocument(documentToEdit: DocumentToEdit, file:any): any {
     const formData = new FormData();
     formData.append('file',file);
     formData.append('documentToEdit', JSON.stringify(documentToEdit));
     return this.http.put('http://localhost:8080/api/document/', formData)
       .toPromise();
+  }
+  getDocumentForUser() {                        
+    return this.http.get('http://localhost:8080/api/document/forLoggedAccount')
+    .toPromise();
+  }
+  deleteDocument(documentId: number) {
+    return this.http.delete('http://localhost:8080/api/document/'+documentId).toPromise();
+  }
+  getOpinions(documentId: number) {
+    return this.http.get('http://localhost:8080/api/document/'+documentId+"/opinions")
+    .toPromise();
   }
 
   getAllDocuments(documentSearch: DocumentSearch) {

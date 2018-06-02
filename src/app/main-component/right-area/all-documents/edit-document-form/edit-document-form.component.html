@@ -49,6 +49,7 @@
                         <div *ngFor="let opinion of opinions">
                             <p-fieldset [legend]="(opinion.addDate | date:'yyyy-MM-dd HH:mm') + ' - ' + opinion.user">
                                 {{opinion.content}}
+                                <fa class="del-opinion" [name]="'times'" [size]=1 (click)="deleteOpinion(opinion)"></fa>
                             </p-fieldset>
                         </div>
                         <br>
@@ -64,9 +65,7 @@
                     <label>Dodaj plik:</label>
                     <p-fileUpload #fileInput [showUploadButton]="false" [showCancelButton]="false" maxFileSize="1000000"></p-fileUpload>
                 </td>
-
             </tr>
-
         </table>
     </form>
 </div>

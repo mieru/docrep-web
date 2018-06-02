@@ -49,6 +49,7 @@ public editFileOnline(filename:string){
   this.router.navigateByUrl('documents/edit-document-online');
 }
 
+
   public prepareStorageLocationTree(storageLocation:StorageLocation):string{
     let superior:string = '';
     if(storageLocation.superiorStorageLocation){
@@ -65,6 +66,9 @@ public deleteDocument(){
   this.documentService.deleteDocument(this.document.id);
 }
 
+public isOdt(filename:string):boolean{
+  return filename.lastIndexOf(".odt") != -1; 
+}
 
 
 

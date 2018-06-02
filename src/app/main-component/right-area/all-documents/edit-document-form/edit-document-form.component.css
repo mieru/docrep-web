@@ -10,3 +10,10 @@ label {
 .form-detail {
     padding: 20px;
 }
+
+.del-opinion {
+    cursor: pointer;
+    float: right;
+    position: relative;
+    opacity: 0.7;
+}

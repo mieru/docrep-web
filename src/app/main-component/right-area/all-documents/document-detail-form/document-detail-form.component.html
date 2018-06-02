@@ -63,10 +63,10 @@
                     <label> Załączone pliki:</label>
                     <p-dataTable [value]="documentAttachments">
                         <p-column field="name" header="Nazwa"></p-column>
-                        <p-column field="name" [style]="{'width':'40px'}">
+                        <p-column field="name" [style]="{'width':'60px'}">
                             <ng-template let-col let-attachment="rowData" pTemplate="body">
                                 <fa [name]="'download'" [size]=1 (click)="downloadFile(attachment[col.field])"></fa>
-                                <fa [name]="'edit'" [size]=1 (click)="editFileOnline(attachment[col.field])"></fa>
+                                <fa *ngIf="isOdt(attachment[col.field])" [name]="'edit'" [size]=1 (click)="editFileOnline(attachment[col.field])"></fa>
                             </ng-template>
                         </p-column>
                     </p-dataTable>

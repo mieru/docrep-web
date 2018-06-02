@@ -48,6 +48,10 @@ export class EditDocumentFormComponent implements OnInit {
    
   }
 
+deleteOpinion(opinion){
+  this.documentService.deleteOpinion(opinion);
+}
+
   onSubmit(event){
     let documentToEdit = new DocumentToEdit()
     documentToEdit.description = this.document.description;

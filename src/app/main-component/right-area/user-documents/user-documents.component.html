@@ -1,31 +1,171 @@
-<p-dataList [value]="documents" [paginator]="true" [rows]="5">
-    <p-header>
-        Moje dokumenty
-    </p-header>
-    <ng-template let-document pTemplate="item">
-        <div class="document-row">
+<table style="width: 100%">
+    <tr>
+        <td style="height: 250px; width: 700px;">
             <table style="width: 100%;">
                 <tr>
-                    <td>
-                        <strong>{{document.title}}</strong>
+                    <td colspan="3">
+                        <h2>{{account?.person?.firstname}} {{account?.person?.lastname}} ({{account?.person?.jobPosition}}) </h2>
                     </td>
-                    <td>
-                        <strong>{{document.number}}</strong>
+                    <td style="vertical-align: middle; width: 150px;">
+                        <button *ngIf="!editMode" (click)="editModeSwitch()" pButton label="Edycja"></button>
+                        <button *ngIf="editMode" (click)="editUser()" pButton label="Ok"></button>
+                        <button *ngIf="editMode" (click)="editModeSwitch()" pButton label="Anuluj"></button>
                     </td>
-                    <td>
-                        <strong>{{document.barcode}}</strong>
-                    </td>
-                    <td>
-                        <strong>{{document.registerDate}}</strong>
-                    </td>
-
                 </tr>
                 <tr>
-                    <td colspan="10">
-                        <span>{{document.description}}</span>
+                    <td>
+                        <label>Pesel: </label>
+                        <div *ngIf="!editMode">{{account?.person?.pesel}} </div>
+                        <input *ngIf="editMode" type="text" [(ngModel)]="account.person.pesel" name="pesel" [ngModelOptions]="{standalone: true}" pInputText>
+                    </td>
+                    <td>
+                        <label>Identyfikator: </label>
+                        <div *ngIf="!editMode">{{account?.person?.idNumber}} </div>
+                        <input *ngIf="editMode" type="text" [(ngModel)]="account.person.idNumber" name="pesel" [ngModelOptions]="{standalone: true}" pInputText>
+                    </td>
+                    <td>
+                        <label *ngIf="!editMode">Adres:</label>
+                        <div *ngIf="!editMode">{{account?.person?.address?.streetName}} {{account?.person?.address?.buildingNumber}} <span *ngIf="account?.person?.address?.premisesNumber">/{{account?.person?.address?.premisesNumber}}</span></div>
+                        <div *ngIf="!editMode">{{account?.person?.address?.postalCode}} {{account?.person?.address?.city}}</div>
+                        <div *ngIf="editMode">
+                            <div>
+                                <label>Ulica:</label>
+                                <div> <input *ngIf="editMode" type="text" [(ngModel)]="account.person.address.streetName" name="pesel" [ngModelOptions]="{standalone: true}" pInputText></div>
+                            </div>
+                            <div style="display: inline;">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <label>Nr budynku:</label>
+                                            <div> <input *ngIf="editMode" size="5" type="text" [(ngModel)]="account.person.address.buildingNumber" name="pesel" [ngModelOptions]="{standalone: true}" pInputText> </div>
+                                        </td>
+                                        <td><label>Nr lokalu:</label>
+                                            <div> <input *ngIf="editMode" size="5" type="text" [(ngModel)]="account.person.address.premisesNumber" name="pesel" [ngModelOptions]="{standalone: true}" pInputText></div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div>
+                                <label>Kod pocztowy:</label>
+                                <div><input *ngIf="editMode" size="5" type="text" [(ngModel)]="account.person.address.postalCode" name="pesel" [ngModelOptions]="{standalone: true}" pInputText></div>
+                            </div>
+                            <div>
+                                <label>Miasto:</label>
+                                <div><input *ngIf="editMode" type="text" [(ngModel)]="account.person.address.city" name="pesel" [ngModelOptions]="{standalone: true}" pInputText></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div>
+                            <strong *ngIf="account?.person?.contacts">Kontakt</strong>
+                            <table>
+                                <tr *ngFor="let contact of account?.person?.contacts">
+                                    <td style="width: 150px;"><label>{{contact.description}}:</label></td>
+                                    <td> {{contact.value}}</td>
+                                </tr>
+                            </table>
+                        </div>
                     </td>
                 </tr>
             </table>
-        </div>
-    </ng-template>
-</p-dataList>
+        </td>
+        <td colspan="3" style="margin:auto;">
+            <div style="margin:auto;">
+                <h4 style="margin-bottom: 8px;">Zmiana hasła: <button *ngIf="!editPassword" (click)="editPasswordSwitch()" pButton label="Zmień hasło"></button></h4>
+                <div *ngIf="editPassword" style="display: inline">
+                    <div>
+                        <label>Stare hasło:</label>
+                        <div> <input type="password" [(ngModel)]="oldPassword" name="pesel" [ngModelOptions]="{standalone: true}" pInputText> </div>
+                    </div>
+                    <div>
+                        <label>Nowe hasło:</label>
+                        <div><input type="password" [(ngModel)]="newPassword" name="pesel" [ngModelOptions]="{standalone: true}" pInputText></div>
+                    </div>
+                    <div>
+                        <label>Powtorz hasło:</label>
+                        <div><input type="password" [(ngModel)]="repeatedPassword" name="pesel" [ngModelOptions]="{standalone: true}" pInputText></div>
+                    </div>
+                    <div style="margin: 2px;">
+                        <button *ngIf="editPassword" (click)="changePassword()" pButton label="Ok"></button>
+                        <button *ngIf="editPassword" (click)="editPasswordSwitch()" pButton label="Anuluj"></button>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div>
+                <p-dataList [value]="documents" [paginator]="true" [rows]="10">
+                    <p-header> Moje dokumenty </p-header>
+                    <ng-template let-document pTemplate="item ">
+                        <div class="document-row" (dblclick)="onClick($event, document)">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <label>Tytuł:</label>
+                                        <div>{{document.title}}</div>
+                                    </td>
+                                    <td>
+                                        <label>Numer:</label>
+                                        <div>{{document.number}}</div>
+                                    </td>
+                                    <td><label>Kod:</label>
+                                        <div>{{document.barcode}}</div>
+                                    </td>
+                                    <td><label>Data rejestracji:</label>
+                                        <div>{{document.registerDate | date:'yyyy-MM-dd HH:mm' }}</div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="description">
+                                            <div [title]="document.description">{{document.description}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ng-template>
+                </p-dataList>
+            </div>
+        </td>
+        <td colspan="2">
+            <div>
+                <p-dataList [value]="docsInCart" [paginator]="true" [rows]="10">
+                    <p-header> Zapisane w koszyku </p-header>
+                    <ng-template let-document pTemplate="item ">
+                        <div class="document-row">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <label>Tytuł:</label>
+                                        <div>{{document.title}}</div>
+                                    </td>
+                                    <td>
+                                        <label>Numer:</label>
+                                        <div>{{document.number}}</div>
+                                    </td>
+                                    <td><label>Kod:</label>
+                                        <div>{{document.barcode}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="description">
+                                            <div [title]="document.description">{{document.description}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ng-template>
+                </p-dataList>
+            </div>
+        </td>
+    </tr>
+</table>
