@@ -14,8 +14,10 @@ export class UserService {
   }
 
   editAccount(account: Account): any {
-    this.http.post("http://localhost:8080/api/account/", account).toPromise();
+    this.http.put("http://localhost:8080/api/account/", account).toPromise();
   }
+
+
 
   getUserInfo(){
     return this.http.get("http://localhost:8080/api/account/logged").toPromise();

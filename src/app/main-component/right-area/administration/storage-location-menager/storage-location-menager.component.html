@@ -1,3 +1,46 @@
-<p>
-  storage-location-menager works!
-</p>
+<p-table [columns]="cols" [value]="storageLocations" selectionMode="single" (onRowSelect)="onRowSelect($event)" [(selection)]="selectedStorageLocation" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="summary" let-rowData>
+        <div style="text-align:left">
+            <button type="button" pButton icon="fa-plus" (click)="showDialogToAdd()" label="Dodaj"></button>
+        </div>
+    </ng-template>
+
+</p-table>
+
+<p-dialog [header]="newStorageLocation ? 'Dodaj' : 'Edycja'" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="300">
+    <div class="ui-g ui-fluid" *ngIf="storageLocation">
+        <div class="ui-g-12">
+            <label for="vin">Nazwa miejsca</label>
+            <input pInputText id="name" [(ngModel)]="storageLocation.name" />
+        </div>
+        <div class="ui-g-12">
+            <label for="year">Typ</label>
+            <input pInputText id="type" [(ngModel)]="storageLocation.type" />
+        </div>
+        <div *ngIf="!newaccount" class="ui-g-12">
+            <label for="brand">Opis</label>
+            <input pInputText id="description" [(ngModel)]="storageLocation.description" />
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Usuń"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Zapisz"></button>
+        </div>
+    </p-footer>
+</p-dialog>

@@ -4,9 +4,34 @@
             <table style="width: 100%;">
                 <tr>
                     <td colspan="2">
-                        <h2>{{account?.person?.firstname}} {{account?.person?.lastname}} ({{account?.person?.jobPosition}}) </h2>
+                        <h2 *ngIf="!editMode">{{account?.person?.firstname}} {{account?.person?.lastname}} ({{account?.person?.jobPosition}}) </h2>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label *ngIf="editMode">Imię: </label>
+                                    <div *ngIf="editMode">
+                                        <input *ngIf="editMode" type="text" [(ngModel)]="account.person.firstname" name="firstname" [ngModelOptions]="{standalone: true}" pInputText>
+                                    </div>
+                                </td>
+                                <td>
+                                    <label *ngIf="editMode">Nazwisko: </label>
+                                    <div *ngIf="editMode">
+                                        <input *ngIf="editMode" type="text" [(ngModel)]="account.person.lastname" name="lastname" [ngModelOptions]="{standalone: true}" pInputText>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label *ngIf="editMode">Stanowisko: </label>
+                                    <div *ngIf="editMode">
+                                        <input *ngIf="editMode" type="text" [(ngModel)]="account.person.jobPosition" name="jobPosition" [ngModelOptions]="{standalone: true}" pInputText>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
                     </td>
-                    <td style="vertical-align: middle; width: 20pxpx;">
+                    <td style="vertical-align: middle; width: 20px;">
                         <button *ngIf="!editMode" (click)="editModeSwitch()" pButton label="Edycja"></button>
                         <button *ngIf="editMode" (click)="editUser()" pButton label="Ok"></button>
                         <button *ngIf="editMode" (click)="editModeSwitch()" pButton label="Anuluj"></button>

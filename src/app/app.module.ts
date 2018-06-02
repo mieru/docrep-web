@@ -45,6 +45,7 @@ import {TabViewModule} from 'primeng/tabview';
 import {TableModule} from 'primeng/table';
 import { UserMenagerComponent } from './main-component/right-area/administration/user-menager/user-menager.component';
 import { StorageLocationMenagerComponent } from './main-component/right-area/administration/storage-location-menager/storage-location-menager.component';
+import {DialogModule} from 'primeng/dialog';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'user/documents', pathMatch: 'full' },
@@ -96,6 +97,7 @@ const appRoutes: Routes = [
     FormsModule,
     DropdownModule,
     TabViewModule,
+    DialogModule,
     FieldsetModule,
     TreeModule,
     NgxBarcodeModule,

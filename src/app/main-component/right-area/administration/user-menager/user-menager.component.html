@@ -1,4 +1,4 @@
-<p-table [columns]="cols" [value]="accounts" selectionMode="single" [(selection)]="selectedAccount" [paginator]="true" [rows]="10">
+<p-table [columns]="cols" [value]="accounts" selectionMode="single" (onRowSelect)="onRowSelect($event)" [(selection)]="selectedAccount" [paginator]="true" [rows]="10">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns">
@@ -16,51 +16,31 @@
 
     <ng-template pTemplate="summary" let-rowData>
         <div style="text-align:left">
-            <button type="button" pButton icon="fa-plus" label="Add"></button>
+            <button type="button" pButton icon="fa-plus" (click)="showDialogToAdd()" label="Dodaj"></button>
         </div>
     </ng-template>
 
 </p-table>
 
-<!-- <p-dialog header="Car Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="300">
-    <div class="ui-g ui-fluid" *ngIf="car">
+<p-dialog [header]="newaccount ? 'Dodaj' : 'Edycja'" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="300">
+    <div class="ui-g ui-fluid" *ngIf="account">
         <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="vin">Vin</label>
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="vin" [(ngModel)]="car.vin" />
-            </div>
+            <label for="vin">Nazwa użytkownika</label>
+            <input pInputText id="username" [(ngModel)]="account.username" />
         </div>
         <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="year">Year</label>
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="year" [(ngModel)]="car.year" />
-            </div>
+            <label for="year">Nowe hasło</label>
+            <input pInputText id="password" [(ngModel)]="account.password" />
         </div>
-        <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="brand">Brand</label>
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="brand" [(ngModel)]="car.brand" />
-            </div>
-        </div>
-        <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="color">Color</label>
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="color" [(ngModel)]="car.color" />
-            </div>
+        <div *ngIf="!newaccount" class="ui-g-12">
+            <label for="brand">Status</label>
+            <input pInputText id="status" [(ngModel)]="account.status" />
         </div>
     </div>
     <p-footer>
         <div class="ui-dialog-buttonpane ui-helper-clearfix">
-            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
-            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Usuń"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Zapisz"></button>
         </div>
     </p-footer>
-</p-dialog> -->
+</p-dialog>
