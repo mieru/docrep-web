@@ -15,7 +15,7 @@ export class DocumentCartViewComponent implements OnInit {
 
   ngOnInit() {
  
-    this.documentService.getDocumentForUser().then(docs => this.docsInCart = <Document[]>docs);
+    this.documentService.getDocumentFromUserCart().then(docs => this.docsInCart = <Document[]>docs);
   }
 
   onClick($event, document){

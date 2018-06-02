@@ -12,6 +12,7 @@ export class DocumentService {
  
  
 
+
   public selectedDocument:Document;
   public documents: Document[];
 
@@ -25,6 +26,15 @@ export class DocumentService {
     return this.http.post('http://localhost:8080/api/document/', formData)
       .toPromise();
   }
+
+  getDocumentFromUserCart(): any {
+    return this.http.get('http://localhost:8080/api/document/fromUserCart')
+    .toPromise();
+}
+
+  deleteDocumentFromCart(document: Document) {
+     this.http.delete('http://localhost:8080/api/document/cart/'+document.id).toPromise();
+}
 
   deleteOpinion(opinion: any) {
     this.http.delete('http://localhost:8080/api/document/opinion/'+opinion.id).toPromise();

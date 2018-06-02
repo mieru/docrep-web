@@ -153,6 +153,9 @@
                                     <td><label>Kod:</label>
                                         <div>{{document.barcode}}</div>
                                     </td>
+                                    <td>
+                                        <fa class="del-document-cart" [name]="'times'" [size]=1 (click)="deleteDocFormCart(document)"></fa>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="3">

@@ -21,3 +21,10 @@ label {
     font-size: 15px;
     font-weight: 700;
 }
+
+.del-document-cart {
+    cursor: pointer;
+    float: right;
+    position: relative;
+    opacity: 0.7;
+}
