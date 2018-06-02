@@ -1,5 +1,23 @@
+<h4>Szczegoly miejsca przechowywania:</h4>
 <div>
-    Test
+    <table style="width: 100%;">
+        <tr>
+            <td style="width:310px;">
+                <label>Nazwa:</label>
+                <div>{{storageLocation?.name}}</div>
+            </td>
+            <td style="width:310px">
+                <label>Typ:</label>
+                <div>{{storageType}}</div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label>Opis:</label>
+                <div>{{storageLocation?.description}}</div>
+        </tr>
+    </table>
+
 </div>
 <div>
     <p-dataList [value]="documents" [paginator]="true" [rows]="10">
@@ -8,7 +26,6 @@
             <div class="document-row" (dblclick)="onClick($event, document)">
                 <table style="width: 100%;">
                     <tr>
-
                         <td>
                             <label>Tytuł:</label>
                             <div>{{document.title}}</div>

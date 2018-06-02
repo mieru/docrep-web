@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnChanges } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { StorageLocationService } from '../../all-documents/storage-location.service';
 
@@ -21,7 +21,9 @@ export class StorageLocTreeComponent implements OnInit {
     this.storageLocation.getStorageLocationsAsTree().then(res => this.treeNodes = res);
   }
 
-  ngOnChanges(){
+
+  nodeSelect($event){
+    console.log($event);
     this.selectedEvent.emit(this.selected);
   }
 

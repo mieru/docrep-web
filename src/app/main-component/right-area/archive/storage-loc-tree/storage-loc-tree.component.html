@@ -1,1 +1,1 @@
-<p-tree [value]="treeNodes" selectionMode="single" [(selection)]="selected"></p-tree>
+<p-tree [value]="treeNodes" selectionMode="single" [(selection)]="selected" (onNodeSelect)="nodeSelect($event)"></p-tree>
