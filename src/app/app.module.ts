@@ -37,6 +37,10 @@ import { DocumentService } from "./main-component/right-area/document/document.s
 import {DataTableModule} from 'primeng/datatable';
 import {FieldsetModule} from 'primeng/fieldset';
 import { DocumentCartViewComponent } from './main-component/top-bar/document-cart-view/document-cart-view.component';
+import {TreeModule} from 'primeng/tree';
+import { StorageLocTreeComponent } from './main-component/right-area/archive/storage-loc-tree/storage-loc-tree.component';
+import { StorageLocationDetailComponent } from './main-component/right-area/archive/storage-location-detail/storage-location-detail.component';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'user/documents', pathMatch: 'full' },
@@ -74,7 +78,9 @@ const appRoutes: Routes = [
     EditDocumentFormComponent,
     DocumentDetailFormComponent,
     DocumentEditorOnlineComponent,
-    DocumentCartViewComponent
+    DocumentCartViewComponent,
+    StorageLocTreeComponent,
+    StorageLocationDetailComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -82,6 +88,7 @@ const appRoutes: Routes = [
     FormsModule,
     DropdownModule,
     FieldsetModule,
+    TreeModule,
     NgxBarcodeModule,
     DataTableModule,
     CalendarModule,

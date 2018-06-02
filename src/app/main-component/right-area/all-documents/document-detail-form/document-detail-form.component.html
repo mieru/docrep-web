@@ -48,6 +48,10 @@
                 <td rowspan="3" colspan="3">
                     <div>
                         <label>Opiniowanie:</label>
+                        <div *ngIf="opinions">
+                            <span>Nie dodano jeszcze opinie do tego dokumentu.</span>
+                        </div>
+
                         <div *ngFor="let opinion of opinions">
                             <p-fieldset [legend]="(opinion.addDate | date:'yyyy-MM-dd HH:mm') + ' - ' + opinion.user">
                                 {{opinion.content}}

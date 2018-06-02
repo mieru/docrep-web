@@ -3,10 +3,10 @@
         <td style="height: 250px; width: 700px;">
             <table style="width: 100%;">
                 <tr>
-                    <td colspan="3">
+                    <td colspan="2">
                         <h2>{{account?.person?.firstname}} {{account?.person?.lastname}} ({{account?.person?.jobPosition}}) </h2>
                     </td>
-                    <td style="vertical-align: middle; width: 150px;">
+                    <td style="vertical-align: middle; width: 20pxpx;">
                         <button *ngIf="!editMode" (click)="editModeSwitch()" pButton label="Edycja"></button>
                         <button *ngIf="editMode" (click)="editUser()" pButton label="Ok"></button>
                         <button *ngIf="editMode" (click)="editModeSwitch()" pButton label="Anuluj"></button>
@@ -64,7 +64,8 @@
                             <table>
                                 <tr *ngFor="let contact of account?.person?.contacts">
                                     <td style="width: 150px;"><label>{{contact.description}}:</label></td>
-                                    <td> {{contact.value}}</td>
+                                    <td *ngIf="!editMode"> {{contact.value}}</td>
+                                    <td><input *ngIf="editMode" type="text" [(ngModel)]="contact.value" name="pesel" [ngModelOptions]="{standalone: true}" pInputText></td>
                                 </tr>
                             </table>
                         </div>
@@ -100,7 +101,7 @@
         <td colspan="2">
             <div>
                 <p-dataList [value]="documents" [paginator]="true" [rows]="10">
-                    <p-header> Moje dokumenty </p-header>
+                    <p-header>Dokumenty u mnie </p-header>
                     <ng-template let-document pTemplate="item ">
                         <div class="document-row" (dblclick)="onClick($event, document)">
                             <table style="width: 100%;">

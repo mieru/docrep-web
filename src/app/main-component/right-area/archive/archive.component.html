@@ -1,3 +1,11 @@
-<p>
-  archive works!
-</p>
+<table>
+    <tr>
+        <td>
+            <h4>Miejsca przechowywania:</h4>
+            <app-storage-loc-tree (selectedEvent)="selected = $event"></app-storage-loc-tree>
+        </td>
+        <td>
+            <app-storage-location-detail *ngIf="selected" [storageLocation]="selected"></app-storage-location-detail>
+        </td>
+    </tr>
+</table>

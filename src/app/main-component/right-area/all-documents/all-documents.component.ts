@@ -29,6 +29,7 @@ export class AllDocumentsComponent implements OnInit {
 
   constructor(public documentService: DocumentService, private router:Router) {
     this.owners = [
+      {label: '', value: null},
       {label: 'Jan Kowalski', value: 15}
   ];
    }

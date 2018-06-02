@@ -6,6 +6,7 @@ export class DocumentSearch{
     barcode:string;
     searchDateFrom:Date;
     searchDateTo:Date;
+    storageLocationId:number
     description:string;
     ownerId:number;
     holderUserId:number;

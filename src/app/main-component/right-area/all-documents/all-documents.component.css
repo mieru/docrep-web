@@ -1,6 +1,6 @@
 .document-row td {
     vertical-align: top;
-    min-width: 215px;
+    min-width: 235px;
 }
 
 .document-row {
@@ -15,7 +15,7 @@
 }
 
 .search-form td {
-    width: 210px;
+    width: 270px;
 }
 
 .search-form {
