@@ -33,6 +33,10 @@
             <input pInputText id="type" [(ngModel)]="storageLocation.type" />
         </div>
         <div *ngIf="!newaccount" class="ui-g-12">
+            <label for="brand">Id nadrzędnego</label>
+            <input pInputText id="superiorStorageLocId" [(ngModel)]="storageLocation.superiorStorageLocId" />
+        </div>
+        <div *ngIf="!newaccount" class="ui-g-12">
             <label for="brand">Opis</label>
             <input pInputText id="description" [(ngModel)]="storageLocation.description" />
         </div>

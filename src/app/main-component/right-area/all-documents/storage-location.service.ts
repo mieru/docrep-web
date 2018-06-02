@@ -19,7 +19,7 @@ export class StorageLocationService {
     .toPromise()
   }
   deleteStorageLocation(storageLocation: StorageLocation): any {
-    return this.http.delete('http://localhost:8080/api/storagelocation/'+storageLocation.id)
+    return this.http.delete('http://localhost:8080/api/storagelocation/'+storageLocation.id+'/')
     .toPromise()
   }
   addStorageLocation(storageLocation: StorageLocation): any {
