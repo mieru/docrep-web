@@ -1,0 +1,21 @@
+<div class="cart-body">
+    <p-dataList [value]="docsInCart" [paginator]="true" [rows]="4">
+        <p-header> Zapisane w koszyku </p-header>
+        <ng-template let-document pTemplate="item ">
+            <div class="document-row" (dblclick)="onClick($event, document)">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <label>Tytuł:</label>
+                            <div>{{document.title}}</div>
+                        </td>
+                        <td>
+                            <label>Numer:</label>
+                            <div>{{document.number}}</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </ng-template>
+    </p-dataList>
+</div>

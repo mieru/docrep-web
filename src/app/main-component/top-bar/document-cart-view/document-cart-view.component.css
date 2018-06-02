@@ -1,0 +1,21 @@
+.cart-body {
+    width: 380px;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.document-row td {
+    width: 210px;
+}
+
+.document-row {
+    text-align: justify;
+    font-size: 12px;
+    border-bottom: 1px solid #d4d5d6;
+}
+
+.document-row:hover {
+    cursor: pointer;
+    background-color: #d8d6d6;
+}

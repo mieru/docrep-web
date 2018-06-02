@@ -36,6 +36,7 @@ import { DocumentEditorOnlineComponent } from "./main-component/right-area/docum
 import { DocumentService } from "./main-component/right-area/document/document.service";
 import {DataTableModule} from 'primeng/datatable';
 import {FieldsetModule} from 'primeng/fieldset';
+import { DocumentCartViewComponent } from './main-component/top-bar/document-cart-view/document-cart-view.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'user/documents', pathMatch: 'full' },
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
     AddDocumentFormComponent,
     EditDocumentFormComponent,
     DocumentDetailFormComponent,
-    DocumentEditorOnlineComponent
+    DocumentEditorOnlineComponent,
+    DocumentCartViewComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

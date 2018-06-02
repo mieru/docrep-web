@@ -9,11 +9,17 @@ export class TopBarComponent implements OnInit {
   @Output() hamButtonEvent = new EventEmitter<void>();
   constructor() { }
 
+  cartView:boolean = false;
+  
   ngOnInit() {
   }
 
   hamButtonClick(){
     this.hamButtonEvent.emit();
   }
+  cartSwitch(){
+    this.cartView = !this.cartView;
+  }
+
 
 }

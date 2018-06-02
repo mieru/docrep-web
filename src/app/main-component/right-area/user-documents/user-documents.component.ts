@@ -35,6 +35,7 @@ export class UserDocumentsComponent implements OnInit {
         console.log(this.account);
       });
       this.documentService.getDocumentForUser().then(docs => this.documents = <Document[]>docs);
+      this.documentService.getDocumentForUser().then(docs => this.docsInCart = <Document[]>docs);
       
     }
 

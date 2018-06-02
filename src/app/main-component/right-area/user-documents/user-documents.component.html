@@ -139,7 +139,7 @@
                 <p-dataList [value]="docsInCart" [paginator]="true" [rows]="10">
                     <p-header> Zapisane w koszyku </p-header>
                     <ng-template let-document pTemplate="item ">
-                        <div class="document-row">
+                        <div class="document-row" (dblclick)="onClick($event, document)">
                             <table style="width: 100%;">
                                 <tr>
                                     <td>

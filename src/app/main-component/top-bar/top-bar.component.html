@@ -11,7 +11,14 @@
                 <app-search-input></app-search-input>
             </td>
             <td>
-                <fa class="shopping-document-basket" [name]="'shopping-basket'" [size]=2></fa>
+                <div class="shopping-document-basket" (click)="cartSwitch()">
+                    <fa [name]="'shopping-basket'" [size]=2></fa>
+                    <span>Koszyk</span>
+                </div>
+                <div *ngIf="cartView" class="document-cart-view">
+                    <app-document-cart-view></app-document-cart-view>
+                </div>
+
             </td>
             <td>
                 <app-user-short-info></app-user-short-info>
